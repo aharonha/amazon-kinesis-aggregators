@@ -307,7 +307,7 @@ public class JsonDataExtractor extends AbstractDataExtractor implements IDataExt
 
     public IDataExtractor copy() throws Exception {
         return new JsonDataExtractor(this.labelAttributes, this.serialiser).withDateFormat(
-                this.dateFormat).withDateValueAttribute(this.dateValueAttribute).withSummaryAttributes(
+                this.dateFormat).withUniqueIdAttribute(this.uniqueIdAttribute).withDateValueAttribute(this.dateValueAttribute).withSummaryAttributes(
                 this.summaryAttributes);
     }
 }

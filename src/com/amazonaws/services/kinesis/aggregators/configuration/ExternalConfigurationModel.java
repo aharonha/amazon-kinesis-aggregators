@@ -59,7 +59,7 @@ public class ExternalConfigurationModel {
 
     private String labelAttributeAlias;
 
-    private String dateItem, dateFormat, dateAttributeAlias;
+    private String dateItem, dateFormat, dateAttributeAlias, uniqueIdAttribute, uniqueIdMethodName;
 
     private List<String> summaryItems;
 
@@ -71,7 +71,7 @@ public class ExternalConfigurationModel {
 
     private String regularExpression;
 
-    private boolean isAnnotatedClass;
+    private boolean isAnnotatedClass=false;
 
     private Class<?> clazz;
 
@@ -263,6 +263,8 @@ public class ExternalConfigurationModel {
             // set generic properties
             config.setNamespace(StreamAggregatorUtils.readValueAsString(section, "namespace"));
             config.setDateFormat(StreamAggregatorUtils.readValueAsString(section, "dateFormat"));
+            config.setUniqueIdAttribute(StreamAggregatorUtils.readValueAsString(section, "uniqueIdAttribute"));
+            config.setUniqueIdMethodName(StreamAggregatorUtils.readValueAsString(section, "uniqueIdMethodName"));
             addTimeHorizons(section, config);
             setAggregatorType(section, config);
 
@@ -357,7 +359,15 @@ public class ExternalConfigurationModel {
         return response;
     }
 
-    public String getNamespace() {
+    public void setUniqueIdAttribute(String uniqueIdAttribute) {
+    	this.uniqueIdAttribute = uniqueIdAttribute;		
+	}
+
+    public void setUniqueIdMethodName(String uniqueIdMethodName) {
+		this.uniqueIdMethodName = uniqueIdMethodName;
+	}
+
+	public String getNamespace() {
         return this.namespace;
     }
 
@@ -557,4 +567,12 @@ public class ExternalConfigurationModel {
     private void setDateAttributeAlias(String dateAttributeAlias) {
         this.dateAttributeAlias = dateAttributeAlias;
     }
+
+	public String getUniqueIdAttribute() {
+		return this.uniqueIdAttribute;
+	}
+
+	public String getUniqueIdMethodName() {
+		return this.uniqueIdMethodName;
+	}
 }

@@ -384,7 +384,7 @@ public class ObjectExtractor extends AbstractDataExtractor implements IDataExtra
     }
 
     public IDataExtractor copy() throws Exception {
-        throw new UnsupportedOperationException();
+       return this;// throw new UnsupportedOperationException();
     }
 
     /**

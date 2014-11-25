@@ -94,9 +94,10 @@ public class ExternallyConfiguredAggregatorFactory {
                     dataExtractor = e;
                     break;
                 case JSON:
-                    dataExtractor = new JsonDataExtractor(model.getLabelItems()).withDateFormat(
-                            model.getDateFormat()).withDateValueAttribute(model.getDateItem()).withSummaryAttributes(
-                            model.getSummaryItems()).withItemTerminator(model.getItemTerminator());
+                    dataExtractor = new JsonDataExtractor(model.getLabelItems()).
+                    		withUniqueIdAttribute(model.getUniqueIdAttribute()).withDateFormat(model.getDateFormat()).
+                    		withDateValueAttribute(model.getDateItem()).withSummaryAttributes(model.getSummaryItems()).
+                    		withItemTerminator(model.getItemTerminator());
                     break;
                 case OBJECT:
                     ObjectExtractor extractor = null;
@@ -107,7 +108,7 @@ public class ExternallyConfiguredAggregatorFactory {
                     }
 
                     extractor.withDateMethod(model.getDateItem()).withSummaryMethods(
-                            model.getSummaryItems());
+                            model.getSummaryItems()).withUniqueIdMethod(model.getUniqueIdMethodName());
                     dataExtractor = extractor;
                     break;
 
